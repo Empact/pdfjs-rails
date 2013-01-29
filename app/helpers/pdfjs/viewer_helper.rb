@@ -81,6 +81,14 @@ module Pdfjs
                     <button class="toolbarButton pageDown#{can_display[:page_buttons]}" title="Next Page" id="next" tabindex="6" data-l10n-id="next">
                       <span data-l10n-id="next_label">Next</span>
                     </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button class="toolbarButton firstPage" title="First Page" onclick="PDFView.page = 1;" id="first_page" tabindex="5" data-l10n-id="first_page">
+                      <span data-l10n-id="first_page_label">First</span>
+                    </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button class="toolbarButton lastPage" title="Last Page" id="last_page" tabindex="5" data-l10n-id="last_page">
+                      <span data-l10n-id="last_page_label">Last</span>
+                    </button>
                   </div>
                   <label id="pageNumberLabel" class="toolbarLabel#{can_display[:page_selector]}" for="pageNumber" data-l10n-id="page_label">Page: </label>
                   <input type="number" id="pageNumber" class="toolbarField pageNumber#{can_display[:page_selector]}" value="1" size="4" min="1" tabindex="7">
