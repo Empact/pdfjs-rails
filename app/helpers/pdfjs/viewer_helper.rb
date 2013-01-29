@@ -189,7 +189,8 @@ module Pdfjs
     
       <script type="text/javascript">
         var pagesCount = 0;
-        document.getElementById('pageNumber').max = pagesCount;
+        pagesCount = document.getElementById('pageNumber').max;
+        alert(pagesCount);
         document.getElementById('last_page').onclick = function() {
           PDFView.page = pagesCount;
         };
