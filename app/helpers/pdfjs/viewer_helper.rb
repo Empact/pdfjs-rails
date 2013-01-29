@@ -188,8 +188,9 @@ module Pdfjs
       </div> <!-- outerContainer -->
     
       <script type="text/javascript">
+        document.getElementById('pageNumber').max = pagesCount;
         document.getElementById('last_page').onclick = function() {
-          PDFView.page = pdfDocument.numPages;
+          PDFView.page = pagesCount;
         };
         document.addEventListener('DOMContentLoaded', function() {
           PDFView.open(#{filename.to_json}, 0);
