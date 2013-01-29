@@ -650,6 +650,27 @@
   content: url(<%= asset_path 'toolbarButton-pageDown-rtl.png' %>);
 }
 
+#outerContainer[dir='ltr'] .toolbarButton.firstPage::before {
+  display: inline-block;
+  content: url(<%= asset_path 'toolbarButton-firstPage.png' %>);
+}
+
+#outerContainer[dir='rtl'] .toolbarButton.firstPage::before {
+  display: inline-block;
+  content: url(<%= asset_path 'toolbarButton-firstPage.png' %>);
+}
+
+#outerContainer[dir='ltr'] .toolbarButton.lastPage::before {
+  display: inline-block;
+  content: url(<%= asset_path 'toolbarButton-lastPage.png' %>);
+}
+
+#outerContainer[dir='rtl'] .toolbarButton.lastPage::before {
+  display: inline-block;
+  content: url(<%= asset_path 'toolbarButton-lastPage.png' %>);
+}
+
+
 #toolbarViewer .toolbarButton.zoomOut::before {
   display: inline-block;
   content: url(<%= asset_path 'toolbarButton-zoomOut.png' %>);
