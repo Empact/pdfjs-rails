@@ -86,7 +86,7 @@ module Pdfjs
                       <span data-l10n-id="first_page_label">First</span>
                     </button>
                     <div class="splitToolbarButtonSeparator"></div>
-                    <button class="toolbarButton lastPage" title="Last Page" id="last_page" tabindex="5" data-l10n-id="last_page">
+                    <button class="toolbarButton lastPage" title="Last Page" onclick="PDFView.page = document.getElementById('pageNumber').getAttribute('max');" id="last_page" tabindex="5" data-l10n-id="last_page">
                       <span data-l10n-id="last_page_label">Last</span>
                     </button>
                   </div>
@@ -188,9 +188,9 @@ module Pdfjs
       </div> <!-- outerContainer -->
     
       <script type="text/javascript">
-        document.getElementById('last_page').onclick = function() {
-          PDFView.page = document.getElementById('pageNumber').getAttribute('max');
-        };
+#        document.getElementById('last_page').onclick = function() {
+#          PDFView.page = document.getElementById('pageNumber').getAttribute('max');
+#        };
         document.addEventListener('DOMContentLoaded', function() {
           PDFView.open(#{filename.to_json}, 0);
         }, true);
