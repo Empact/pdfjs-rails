@@ -6,8 +6,7 @@ module Pdfjs
       :page_buttons,
       :zoom_buttons,
       :zoom_select,
-      :fullscreen,
-      :print
+      :fullscreen
     ]
     
     DEFAULT = [
