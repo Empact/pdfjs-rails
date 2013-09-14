@@ -6,15 +6,20 @@ module Pdfjs
       :page_buttons,
       :zoom_buttons,
       :zoom_select,
-      :fullscreen
+      :fullscreen,
+      :bookmark,
+      :open,
+      :download,
+      :print
     ]
     
     DEFAULT = [
+      :page_selector,
+      :sidebar,
       :page_buttons,
       :zoom_buttons,
       :zoom_select,
-      :fullscreen,
-      :download
+      :fullscreen
     ]
     
     MINIMAL = [
@@ -24,7 +29,7 @@ module Pdfjs
     ]
     
     def pdf_viewer(filename, options={})
-      toolbar = options.fetch(:toolbar, :everything)
+      toolbar = options.fetch(:toolbar, :default)
       
       toolbar = case toolbar
       when :everything; EVERYTHING
@@ -41,24 +46,9 @@ module Pdfjs
               <button id="viewThumbnail" class="toolbarButton group toggled" title="Show Thumbnails" tabindex="1" data-l10n-id="thumbs">
                  <span data-l10n-id="thumbs_label">Thumbnails</span>
               </button>
-              <button id="viewOutline" class="toolbarButton group hidden" title="Show Document Outline" tabindex="2" data-l10n-id="outline">
-                <span data-l10n-id="outline_label">Document Outline</span>
-              </button>
-              <button id="viewSearch" class="toolbarButton group hidden" title="Search Document" tabindex="3" data-l10n-id="search_panel">
-                 <span data-l10n-id="search_panel_label">Search Document</span>
-              </button>
             </div>
             <div id="sidebarContent">
               <div id="thumbnailView">
-              </div>
-              <div id="outlineView" class="hidden">
-              </div>
-              <div id="searchView" class="hidden">
-                <div id="searchToolbar">
-                  <input id="searchTermsInput" class="toolbarField">
-                  <button id="searchButton" class="textButton toolbarButton" data-l10n-id="search">Find</button>
-                </div>
-                <div id="searchResults"></div>
               </div>
             </div>
         </div>  <!-- sidebarContainer -->
@@ -68,18 +58,16 @@ module Pdfjs
             
               <div id="toolbarViewer">
                 <div id="toolbarViewerLeft">
-                      <button id="sidebarToggle" class="toolbarButton#{can_display[:sidebar]}" title="Toggle Sidebar" tabindex="4" data-l10n-id="toggle_slider">
-                        <span data-l10n-id="toggle_slider_label">Toggle Sidebar</span>
-                      </button>
-                      <!-- <div class="toolbarButtonSpacer#{can_display[:sidebar]}"></div>-->                      
+                  <button id="sidebarToggle" class="toolbarButton#{can_display[:sidebar]}" title="Toggle Sidebar" tabindex="4" data-l10n-id="toggle_slider">
+                    <span data-l10n-id="toggle_slider_label">Toggle Sidebar</span>
+                  </button>
                   <div class="splitToolbarButton">
-                    <button class="toolbarButton firstPage" title="First Page" onclick="PDFView.page = 1;" id="first_page" tabindex="5" data-l10n-id="first_page">
-                      <span data-l10n-id="first_page_label">First</span>
-                    </button>
-                    <div class="splitToolbarButtonSeparator"></div>
-                    <button class="toolbarButton lastPage" title="Last Page" onclick="PDFView.page = PDFView.pdfDocument.numPages" id="last_page" tabindex="5" data-l10n-id="last_page">
-                      <span data-l10n-id="last_page_label">Last</span>
-                    </button>
+                     <button class="toolbarButton firstPage" title="First Page" onclick="PDFView.page = 1;" id="first_page" tabindex="5" data-l10n-id="first_page">
+                       <span data-l10n-id="first_page_label">First</span>
+                     </button>
+                     <button class="toolbarButton lastPage" title="Last Page" onclick="PDFView.page = PDFView.pdfDocument.numPages" id="last_page" tabindex="5" data-l10n-id="last_page">
+                       <span data-l10n-id="last_page_label">Last</span>
+                     </button>
                     <div class="splitToolbarButtonSeparator"></div>
                     <button class="toolbarButton pageUp#{can_display[:page_buttons]}" title="Previous Page" id="previous" tabindex="5" data-l10n-id="previous">
                       <span data-l10n-id="previous_label">Previous</span>
@@ -88,6 +76,21 @@ module Pdfjs
                     <button class="toolbarButton pageDown#{can_display[:page_buttons]}" title="Next Page" id="next" tabindex="6" data-l10n-id="next">
                       <span data-l10n-id="next_label">Next</span>
                     </button>
+                    <div class="toolbarButtonSpacer"></div>
+                    <div class="splitToolbarButton">
+                      <button class="toolbarButton rotateCcw"
+                              title="Rotate Counter-clockwise"
+                              id="page_rotate_ccw" tabindex="7" data-l10n-id="page_rotate_ccw">
+                        &#x21ba;
+                      </button>
+                      <div class="splitToolbarButtonSeparator"></div>
+                      <button class="toolbarButton rotateCw"
+                              title="Rotate Clockwise" id="page_rotate_cw"
+                              tabindex="8" data-
+                              l10n-id="page_rotate_cw">
+                        &#x21bb;
+                      </button>
+                    </div>
                   </div>
                   <label id="pageNumberLabel" class="toolbarLabel#{can_display[:page_selector]}" for="pageNumber" data-l10n-id="page_label">Page: </label>
                   <input type="number" id="pageNumber" class="toolbarField pageNumber#{can_display[:page_selector]}" value="1" size="4" min="1" tabindex="7">
@@ -95,26 +98,9 @@ module Pdfjs
                   <span id="numPages" class="toolbarLabel#{can_display[:page_selector]}"></span>
                 </div>
                 <div id="toolbarViewerRight">
-                  <input id="fileInput" class="fileInput" type="file" oncontextmenu="return false;" style="visibility: hidden; position: fixed; right: 0; top: 0" />
-
-
                   <button id="fullscreen" class="toolbarButton fullscreen#{can_display[:fullscreen]}" title="Fullscreen" tabindex="11" data-l10n-id="fullscreen">
                     <span data-l10n-id="fullscreen_label">Fullscreen</span>
                   </button>
-                  
-                  
-                    <button id="openFile" class="toolbarButton openFile#{can_display[:open]}" title="Open File" tabindex="12" data-l10n-id="open_file">
-                     <span data-l10n-id="open_file_label">Open</span>
-                    </button>
-                  
-                  <button id="print" class="toolbarButton print#{can_display[:print]}" title="Print" tabindex="13" data-l10n-id="print">
-                        <span data-l10n-id="print_label">Print</span>
-                      </button>
-                  <button id="download" class="toolbarButton download#{can_display[:download]}" title="Download" tabindex="14" data-l10n-id="download">
-                    <span data-l10n-id="download_label">Download</span>
-                  </button>
-                  <!-- <div class="toolbarButtonSpacer"></div> -->
-                  <a href="#" id="viewBookmark" class="toolbarButton bookmark#{can_display[:bookmark]}" title="Get bookmark link" tabindex="15" data-l10n-id="bookmark"><span data-l10n-id="bookmark_label">Get bookmark link</span></a>
                 </div>
                 <div class="outerCenter">
                   <div class="innerCenter" id="toolbarViewerMiddle">
@@ -131,7 +117,7 @@ module Pdfjs
                        <select id="scaleSelect" title="Zoom" oncontextmenu="return false;" tabindex="10" data-l10n-id="zoom">
                         <option id="pageAutoOption" value="auto" data-l10n-id="page_scale_auto">Automatic Zoom</option>
                         <option id="pageActualOption" value="page-actual" data-l10n-id="page_scale_actual">Actual Size</option>
-                        <option id="pageFitOption" value="page-fit" data-l10n-id="page_scale_fit" selected>Fit Page</option>
+                        <option id="pageFitOption" value="page-fit" selected="selected" data-l10n-id="page_scale_fit">Fit Page</option>
                         <option id="pageWidthOption" value="page-width" data-l10n-id="page_scale_width">Full Width</option>
                         <option id="customScaleOption" value="custom"></option>
                         <option value="0.5">50%</option>
@@ -147,13 +133,6 @@ module Pdfjs
               </div>
             </div>
           </div>
-
-          <menu type="context" id="viewerContextMenu">
-            <menuitem label="Rotate Counter-Clockwise" id="page_rotate_ccw"
-                      data-l10n-id="page_rotate_ccw" ></menuitem>
-            <menuitem label="Rotate Clockwise" id="page_rotate_cw"
-                      data-l10n-id="page_rotate_cw" ></menuitem>
-          </menu>
 
           <div id="viewerContainer">
             <div id="viewer" contextmenu="viewerContextMenu"></div>
@@ -188,7 +167,7 @@ module Pdfjs
     
       <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-          PDFView.open(#{filename.to_json}, 0);
+          PDFView.open(#{filename.to_json});
         }, true);
       </script>
       HTML
