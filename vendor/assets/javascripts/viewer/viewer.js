@@ -51,8 +51,8 @@ var FindStates = {
   FIND_PENDING: 3
 };
 
-PDFJS.imageResourcesPath = 'assets/images/';
-PDFJS.workerSrc = 'assets/pdf.worker.js';
+PDFJS.imageResourcesPath = '/assets/images/';
+PDFJS.workerSrc = '/assets/pdf.worker.js';
 
 var mozL10n = document.mozL10n || document.webL10n;
 
