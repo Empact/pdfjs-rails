@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{A gem for plugging pdf.js into a Rails application}
   gem.homepage      = "https://github.com/concordia-publishing-house/pdfjs-rails"
 
-  gem.files         = `git ls-files`.split($\)
+  gem.files         = Dir["{lib,vendor}/**/*"] + ["MIT-LICENSE", "README.md"]
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "pdfjs-rails"
