@@ -8,4 +8,5 @@
 //= require compatibility.js
 //= require l10n.js
 //= require pdf.js
+//= require pdf.worker.js
 //= require_tree ./viewer
