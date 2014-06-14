@@ -31,7 +31,7 @@
   top: 0px;
   border-top: 5px solid transparent;
   background-color: #404040;
-  background-image: url(<%= asset_path 'texture.png' %>);
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>);
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -41,7 +41,7 @@
   top: 0px;
   border-top: 5px solid transparent;
   background-color: #404040;
-  background-image: url(<%= asset_path 'texture.png' %>);
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>);
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -58,7 +58,7 @@
 #viewerContainer:full-screen {
   top: 0px;
   background-color: #404040;
-  background-image: url(<%= asset_path 'texture.png' %>);
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>);
   width: 100%;
   height: 100%;
 }
@@ -88,7 +88,7 @@
 #outerContainer {
   width: 100%;
   height: 100%;
-  background-image: url(<%= asset_path 'texture.png' %>);
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>);
   position: relative;
 }
 
@@ -121,7 +121,7 @@
   -o-transition-timing-function: ease;
   transition-duration: 200ms;
   transition-timing-function: ease;
-  
+
 }
 #outerContainer[dir='ltr'] #sidebarContainer {
   -webkit-transition-property: left;
@@ -229,15 +229,15 @@
   width: 200px;
   height: 29px;
   background: #464646;
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -webkit-linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -moz-linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -ms-linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -o-linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
   box-shadow: inset -2px 0 0 hsla(0,0%,100%,.08),
               inset 0 1px 1px hsla(0,0%,0%,.15),
@@ -250,15 +250,15 @@
   position: relative;
   height: 32px;
   background: #505050;
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -webkit-linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -moz-linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -ms-linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     -o-linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
-  background-image: url(<%= asset_path 'texture.png' %>),
+  background-image: url(<%= asset_path 'pdfjs/texture.png' %>),
                     linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
   border-left: 1px solid hsla(0,0%,0%,.5);
   box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
@@ -569,7 +569,7 @@
   max-width: 120px;
   padding: 3px 2px 2px;
   overflow: hidden;
-  background: url(<%= asset_path 'toolbarButton-menuArrows.png' %>) no-repeat;
+  background: url(<%= asset_path 'pdfjs/toolbarButton-menuArrows.png' %>) no-repeat;
 }
 #outerContainer[dir='ltr'] .dropdownToolbarButton {
   background-position: 95%;
@@ -629,77 +629,77 @@
 
 .toolbarButton#sidebarToggle::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-sidebarToggle.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-sidebarToggle.png' %>);
 }
-    
+
 #outerContainer[dir='ltr'] .toolbarButton.pageUp::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-pageUp.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-pageUp.png' %>);
 }
 
 #outerContainer[dir='rtl'] .toolbarButton.pageUp::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-pageUp-rtl.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-pageUp-rtl.png' %>);
 }
-    
+
 #outerContainer[dir='ltr'] .toolbarButton.pageDown::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-pageDown.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-pageDown.png' %>);
 }
 
 #outerContainer[dir='rtl'] .toolbarButton.pageDown::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-pageDown-rtl.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-pageDown-rtl.png' %>);
 }
 
 #outerContainer[dir='ltr'] .toolbarButton.firstPage::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-firstPage.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-firstPage.png' %>);
 }
 
 #outerContainer[dir='rtl'] .toolbarButton.firstPage::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-firstPage.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-firstPage.png' %>);
 }
 
 #outerContainer[dir='ltr'] .toolbarButton.lastPage::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-lastPage.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-lastPage.png' %>);
 }
 
 #outerContainer[dir='rtl'] .toolbarButton.lastPage::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-lastPage.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-lastPage.png' %>);
 }
 
 #toolbarViewer .toolbarButton.zoomOut::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-zoomOut.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-zoomOut.png' %>);
 }
-    
+
 #toolbarViewer .toolbarButton.zoomIn::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-zoomIn.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-zoomIn.png' %>);
 }
 
 #toolbarViewer .toolbarButton.fullscreen::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-fullscreen.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-fullscreen.png' %>);
 }
 
 #toolbarViewer .toolbarButton.print::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-print.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-print.png' %>);
 }
 
 #toolbarViewer .toolbarButton.openFile::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-openFile.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-openFile.png' %>);
 }
 
 #toolbarViewer .toolbarButton.download::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-download.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-download.png' %>);
 }
 
 #toolbarViewer .toolbarButton.bookmark {
@@ -711,22 +711,22 @@
 }
 
 #toolbarViewer .toolbarButton.bookmark::before {
-  content: url(<%= asset_path 'toolbarButton-bookmark.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-bookmark.png' %>);
 }
-    
+
 #viewThumbnail.toolbarButton::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-viewThumbnail.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-viewThumbnail.png' %>);
 }
-    
+
 #viewOutline.toolbarButton::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-viewOutline.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-viewOutline.png' %>);
 }
 
 #viewSearch.toolbarButton::before {
   display: inline-block;
-  content: url(<%= asset_path 'toolbarButton-search.png' %>);
+  content: url(<%= asset_path 'pdfjs/toolbarButton-search.png' %>);
 }
 
 
@@ -819,7 +819,7 @@
   padding: 7px;
   -moz-transition-duration: 150ms;
 }
-    
+
 a:focus > .thumbnail > .thumbnailSelectionRing > .thumbnailImage,
 .thumbnail:hover > .thumbnailSelectionRing > .thumbnailImage {
   opacity: .9;
@@ -995,7 +995,7 @@ canvas {
   top: 0;
   right: 0;
   bottom: 0;
-  background: url(<%= asset_path 'loading-icon.gif' %>) center no-repeat;
+  background: url(<%= asset_path 'pdfjs/loading-icon.gif' %>) center no-repeat;
 }
 
 #loadingBox {
@@ -1038,7 +1038,7 @@ canvas {
   background: -moz-linear-gradient(top, #b2b2b2 0%,#898989 100%);
   background: -ms-linear-gradient(top, #b2b2b2 0%,#898989 100%);
   background: -o-linear-gradient(top, #b2b2b2 0%,#898989 100%);
-  background: linear-gradient(top, #b2b2b2 0%,#898989 100%);    
+  background: linear-gradient(top, #b2b2b2 0%,#898989 100%);
 
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
@@ -1224,7 +1224,7 @@ canvas {
 
 @page {
   margin: 0;
-} 
+}
 
 #printContainer {
   display: none;

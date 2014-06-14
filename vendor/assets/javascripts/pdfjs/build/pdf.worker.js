@@ -36835,7 +36835,7 @@ var Jbig2Image = (function Jbig2ImageClosure() {
         }
       },
       readBit: function ArithmeticDecoder_readBit(contexts, pos) {
-        // contexts are packed into 1 byte: 
+        // contexts are packed into 1 byte:
         // highest 7 bits carry cx.index, lowest bit carries cx.mps
         var cx_index = contexts[pos] >> 1, cx_mps = contexts[pos] & 1;
         var qeTableIcx = QeTable[cx_index];
@@ -37327,7 +37327,7 @@ var Jbig2Image = (function Jbig2ImageClosure() {
         var offsetT = t - ((referenceCorner & 1) ? 0 : symbolHeight);
         var offsetS = currentS - ((referenceCorner & 2) ? symbolWidth : 0);
         if (transposed) {
-          // Place Symbol Bitmap from T1,S1  
+          // Place Symbol Bitmap from T1,S1
           for (var s2 = 0; s2 < symbolHeight; s2++) {
             var row = bitmap[offsetS + s2];
             if (!row) {
@@ -39424,7 +39424,7 @@ var JpegImage = (function jpegImage() {
                 huffmanValues[j] = data[offset];
               i += 17 + codeLengthSum;
 
-              ((huffmanTableSpec >> 4) === 0 ? 
+              ((huffmanTableSpec >> 4) === 0 ?
                 huffmanTablesDC : huffmanTablesAC)[huffmanTableSpec & 15] =
                 buildHuffmanTable(codeLengths, huffmanValues);
             }
