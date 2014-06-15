@@ -5305,45 +5305,6 @@ function webViewerInitialized() {
   var hash = document.location.hash.substring(1);
   var hashParams = PDFView.parseQueryString(hash);
 
-  if ('disableWorker' in hashParams) {
-    PDFJS.disableWorker = (hashParams['disableWorker'] === 'true');
-  }
-
-  if ('disableRange' in hashParams) {
-    PDFJS.disableRange = (hashParams['disableRange'] === 'true');
-  }
-
-  if ('disableAutoFetch' in hashParams) {
-    PDFJS.disableAutoFetch = (hashParams['disableAutoFetch'] === 'true');
-  }
-
-  if ('disableFontFace' in hashParams) {
-    PDFJS.disableFontFace = (hashParams['disableFontFace'] === 'true');
-  }
-
-  if ('disableHistory' in hashParams) {
-    PDFJS.disableHistory = (hashParams['disableHistory'] === 'true');
-  }
-
-  if ('webgl' in hashParams) {
-    PDFJS.disableWebGL = (hashParams['webgl'] !== 'true');
-  }
-
-  if ('useOnlyCssZoom' in hashParams) {
-    USE_ONLY_CSS_ZOOM = (hashParams['useOnlyCssZoom'] === 'true');
-  }
-
-  if ('verbosity' in hashParams) {
-    PDFJS.verbosity = hashParams['verbosity'] | 0;
-  }
-
-  if ('ignoreCurrentPositionOnZoom' in hashParams) {
-    IGNORE_CURRENT_POSITION_ON_ZOOM =
-      (hashParams['ignoreCurrentPositionOnZoom'] === 'true');
-  }
-
-
-
   var locale = PDFJS.locale || navigator.language;
   if ('locale' in hashParams) {
     locale = hashParams['locale'];
@@ -5362,14 +5323,6 @@ function webViewerInitialized() {
         viewer.classList.add('textLayer-' + hashParams['textLayer']);
         break;
     }
-  }
-
-  if ('pdfBug' in hashParams) {
-    PDFJS.pdfBug = true;
-    var pdfBug = hashParams['pdfBug'];
-    var enabled = pdfBug.split(',');
-    PDFBug.enable(enabled);
-    PDFBug.init();
   }
 
   if (!PDFView.supportsPrinting) {
