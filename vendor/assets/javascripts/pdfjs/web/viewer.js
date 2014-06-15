@@ -5286,7 +5286,6 @@ function webViewerLoad(evt) {
 
 function webViewerInitialized() {
   var params = PDFView.parseQueryString(document.location.search.substring(1));
-  var file = 'file' in params ? params.file : DEFAULT_URL;
 
   var fileInput = document.createElement('input');
   fileInput.id = 'fileInput';
@@ -5481,7 +5480,7 @@ function webViewerInitialized() {
   document.getElementById('download').addEventListener('click',
     SecondaryToolbar.downloadClick.bind(SecondaryToolbar));
 
-
+  file = $(mainContainer).data('pdf') || DEFAULT_URL
   if (file) {
     PDFView.open(file, 0);
   }
