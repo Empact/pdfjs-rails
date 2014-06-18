@@ -18,7 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use javascript similar to this to trigger the display of your pdf:
+
+  document.addEventListener('DOMContentLoaded', function() {
+    for (element in document.querySelectorAll('[data-pdf]')) {
+      PDFView.open(element.dataset.pdf);
+    }
+  }, true);
+
+Or the equivalent in jQuery:
+
+  $(document).ready(function() {
+    $('[data-pdf]').each(function() {
+      PDFView.open($(this).data('pdf'));
+    })
+  })
 
 ## Contributing
 
