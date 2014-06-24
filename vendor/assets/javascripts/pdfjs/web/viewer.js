@@ -5433,13 +5433,11 @@ function webViewerInitialized() {
   document.getElementById('download').addEventListener('click',
     SecondaryToolbar.downloadClick.bind(SecondaryToolbar));
 
-  file = $(mainContainer).data('pdf') || DEFAULT_URL
+  var file = $(mainContainer).data('pdf');
   if (file) {
     PDFView.open(file, 0);
   }
 }
-
-document.addEventListener('DOMContentLoaded', webViewerLoad, true);
 
 function updateViewarea() {
 

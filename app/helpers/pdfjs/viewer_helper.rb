@@ -30,7 +30,7 @@ module Pdfjs
 
     def pdf_viewer(filename)
       (<<-HTML).html_safe
-<div id="outerContainer" class="loadingInProgress"  data-pdf=#{filename.to_json}>
+<div id="outerContainer" class="loadingInProgress">
 
   <div id="sidebarContainer">
     <div id="toolbarSidebar">
@@ -56,7 +56,7 @@ module Pdfjs
     </div>
   </div>  <!-- sidebarContainer -->
 
-  <div id="mainContainer">
+  <div id="mainContainer" data-pdf=#{filename.to_json}>
     <div class="findbar hidden doorHanger hiddenSmallView" id="findbar">
       <label for="findInput" class="toolbarLabel" data-l10n-id="find_label">Find:</label>
       <input id="findInput" class="toolbarField" tabindex="41">
