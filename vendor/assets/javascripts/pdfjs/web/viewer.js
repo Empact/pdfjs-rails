@@ -2656,6 +2656,8 @@ var PDFView = {
   idleTimeout: null,
   currentPosition: null,
 
+  updateOnFileInputChange: true,
+
   // called once when the document is loaded
   initialize: function pdfViewInitialize() {
     var self = this;
@@ -5539,34 +5541,36 @@ window.addEventListener('hashchange', function webViewerHashchange(evt) {
 });
 
 window.addEventListener('change', function webViewerChange(evt) {
-  var files = evt.target.files;
-  if (!files || files.length === 0) {
-    return;
+  if (PDFView.updateOnFileInputChange) {
+    var files = evt.target.files;
+    if (!files || files.length === 0) {
+      return;
+    }
+    var file = files[0];
+
+    if (!PDFJS.disableCreateObjectURL &&
+        typeof URL !== 'undefined' && URL.createObjectURL) {
+      PDFView.open(URL.createObjectURL(file), 0);
+    } else {
+      // Read the local file into a Uint8Array.
+      var fileReader = new FileReader();
+      fileReader.onload = function webViewerChangeFileReaderOnload(evt) {
+        var buffer = evt.target.result;
+        var uint8Array = new Uint8Array(buffer);
+        PDFView.open(uint8Array, 0);
+      };
+      fileReader.readAsArrayBuffer(file);
+    }
+
+    PDFView.setTitleUsingUrl(file.name);
+
+    // URL does not reflect proper document location - hiding some icons.
+    document.getElementById('viewBookmark').setAttribute('hidden', 'true');
+    document.getElementById('secondaryViewBookmark').
+      setAttribute('hidden', 'true');
+    document.getElementById('download').setAttribute('hidden', 'true');
+    document.getElementById('secondaryDownload').setAttribute('hidden', 'true');
   }
-  var file = files[0];
-
-  if (!PDFJS.disableCreateObjectURL &&
-      typeof URL !== 'undefined' && URL.createObjectURL) {
-    PDFView.open(URL.createObjectURL(file), 0);
-  } else {
-    // Read the local file into a Uint8Array.
-    var fileReader = new FileReader();
-    fileReader.onload = function webViewerChangeFileReaderOnload(evt) {
-      var buffer = evt.target.result;
-      var uint8Array = new Uint8Array(buffer);
-      PDFView.open(uint8Array, 0);
-    };
-    fileReader.readAsArrayBuffer(file);
-  }
-
-  PDFView.setTitleUsingUrl(file.name);
-
-  // URL does not reflect proper document location - hiding some icons.
-  document.getElementById('viewBookmark').setAttribute('hidden', 'true');
-  document.getElementById('secondaryViewBookmark').
-    setAttribute('hidden', 'true');
-  document.getElementById('download').setAttribute('hidden', 'true');
-  document.getElementById('secondaryDownload').setAttribute('hidden', 'true');
 }, true);
 
 function selectScaleOption(value) {
